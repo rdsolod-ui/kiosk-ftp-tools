@@ -1,0 +1,26 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kiosk-ftp-tools"
+version = "0.1.0"
+description = "Configurable Windows FTP/FTPS CLI and stdio MCP server"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "rdsolod-ui"}]
+dependencies = ["mcp>=1.30,<2", "keyring>=25.7,<26"]
+classifiers = ["Operating System :: Microsoft :: Windows", "Programming Language :: Python :: 3"]
+
+[project.scripts]
+kiosk-ftp = "kiosk_ftp_tools.app:main"
+kiosk-ftp-mcp = "kiosk_ftp_tools.app:serve"
+
+[project.urls]
+Repository = "https://github.com/rdsolod-ui/kiosk-ftp-tools"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kiosk_ftp_tools"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "tests/", "README.md", "pyproject.toml", ".gitignore"]
